@@ -21,12 +21,12 @@ Foreach ($path in $paths){
 }
 if ($result -ne $null) {
         Writelog ($result | Format-Table | Out-String) #([system.String]::Join("`n", $result.Path + $result.FileSize))
-		$mailobject = $result | Select @{Name="Путь"; Expression={$_.path}}, @{Name="Размер"; Expression={$_.FileSize}}
-		$table = "<style>"
-		$table = $table + "TABLE{border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}"
-		$table = $table + "TH{font-family: Arial;border-width: 1px;padding: 6px;border-style: solid;border-color: black;background-color:palegreen}"
-		$table = $table + "TD{font-family: Arial;border-width: 1px;padding: 6px;border-style: solid;border-color: black;background-color:white}"
-		$table = $table + "</style>"
+	$mailobject = $result | Select @{Name="Путь"; Expression={$_.path}}, @{Name="Размер"; Expression={$_.FileSize}}
+	$table = "<style>"
+	$table = $table + "TABLE{border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}"
+	$table = $table + "TH{font-family: Arial;border-width: 1px;padding: 6px;border-style: solid;border-color: black;background-color:palegreen}"
+	$table = $table + "TD{font-family: Arial;border-width: 1px;padding: 6px;border-style: solid;border-color: black;background-color:white}"
+	$table = $table + "</style>"
         $html = $mailobject | ConvertTo-Html -head $table
         $from = $servername
         $to = 'mail@domain.com'
